@@ -35,7 +35,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 	}
 
 	@Override
-	public T remove(int index) {
+	public T remove(int index) throws IndexOutOfBoundsException {
 		if (index >= 0 && index < size) {
 			@SuppressWarnings("unchecked")
 			T item = (T) items[index];
@@ -43,6 +43,9 @@ public class CustomArrayList<T> implements CustomList<T> {
 			for (int i = index; i < size - 1; i++) {
 				items[i] = items[i + 1];
 			}
+
+			// Set the last element to null or any other appropriate placeholder value
+			items[size - 1] = null;
 
 			size--; // Decrement the size
 
